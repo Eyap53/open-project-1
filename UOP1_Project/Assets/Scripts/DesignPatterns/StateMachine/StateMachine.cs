@@ -14,14 +14,14 @@ public class StateMachine
 	/// </summary>
 	public Action stateChanged;
 
-	private readonly List<Transition> transitionFromAnyState = new List<Transition>();
+	private readonly List<Transition> _transitions = new List<Transition>();
 
 	public void Tick()
 	{
 		Transition transition = GetTransitionIfAvailable(currentState);
 		if (transition != null)
 		{
-			SetState(transition.To);
+			SetState(transition.to);
 		}
 
 		currentState?.Tick();
@@ -44,28 +44,24 @@ public class StateMachine
 		currentState.OnEnter();
 	}
 
-	public void AddAnyTransition(State state, Func<bool> predicate)
+	public void AddTransition(State fromState, State toState, Func<bool> predicate)
 	{
-		transitionFromAnyState.Add(new Transition(state, predicate));
+		if (toState == null)
+		{
+			throw new ArgumentException();
+		}
+		if (fromState == toState)
+		{
+			throw new ArgumentException();
+		}
+		_transitions.Add(new Transition(fromState, toState, predicate));
 	}
 
 	private Transition GetTransitionIfAvailable(State currentState)
 	{
-		Transition transitionIfAny = GetNextTransitionFromList(transitionFromAnyState, currentState);
-
-		if (transitionIfAny == null || transitionIfAny.To == currentState)
+		foreach (Transition transition in _transitions)
 		{
-			transitionIfAny = GetNextTransitionFromList(this.currentState.Transitions, null);
-		}
-
-		return transitionIfAny;
-	}
-
-	private static Transition GetNextTransitionFromList(List<Transition> transitions, State blockState)
-	{
-		foreach (Transition transition in transitions)
-		{
-			if (transition.To != blockState && transition.Condition())
+			if (((transition.from == null && transition.to != currentState) || transition.from == currentState) && transition.condition())
 			{
 				return transition;
 			}

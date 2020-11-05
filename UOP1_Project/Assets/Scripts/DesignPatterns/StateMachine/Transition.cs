@@ -2,12 +2,14 @@
 
 public class Transition
 {
-	public Func<bool> Condition { get; }
-	public State To { get; }
+	public Func<bool> condition { get; }
+	public State from { get; }
+	public State to { get; }
 
-	public Transition(State to, Func<bool> condition)
+	public Transition(State from, State to, Func<bool> condition)
 	{
-		To = to;
-		Condition = condition;
+		this.from = from;
+		this.to = to;
+		this.condition = condition;
 	}
 }
