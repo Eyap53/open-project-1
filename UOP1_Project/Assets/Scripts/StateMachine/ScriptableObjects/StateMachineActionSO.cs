@@ -47,28 +47,28 @@
 		}
 
 		#region IStateMachine (component methods)
-        public Transform transform { get { return _parentStateMachine.transform;} }
-        public GameObject gameObject { get { return _parentStateMachine.gameObject;} }
-        public string tag { get { return _parentStateMachine.tag;} set { _parentStateMachine.tag = value;} }
+		public Transform transform { get { return _parentStateMachine.transform; } }
+		public GameObject gameObject { get { return _parentStateMachine.gameObject; } }
+		public string tag { get { return _parentStateMachine.tag; } set { _parentStateMachine.tag = value; } }
 
-        public bool CompareTag(string tag) {return _parentStateMachine.CompareTag(tag);}
-        public T GetComponent<T>(){return _parentStateMachine.GetComponent<T>();}
-        public T GetComponentInChildren<T>(bool includeInactive){return _parentStateMachine.GetComponentInChildren<T>(includeInactive);}
-        public T GetComponentInChildren<T>(){return _parentStateMachine.GetComponentInChildren<T>();}
-        public T GetComponentInParent<T>(){return _parentStateMachine.GetComponentInParent<T>();}
-        public void GetComponents<T>(List<T> results){_parentStateMachine.GetComponents<T>(results);}
-        public T[] GetComponents<T>(){return _parentStateMachine.GetComponents<T>();}
+		public bool CompareTag(string tag) { return _parentStateMachine.CompareTag(tag); }
+		public T GetComponent<T>() { return _parentStateMachine.GetComponent<T>(); }
+		public T GetComponentInChildren<T>(bool includeInactive) { return _parentStateMachine.GetComponentInChildren<T>(includeInactive); }
+		public T GetComponentInChildren<T>() { return _parentStateMachine.GetComponentInChildren<T>(); }
+		public T GetComponentInParent<T>() { return _parentStateMachine.GetComponentInParent<T>(); }
+		public void GetComponents<T>(List<T> results) { _parentStateMachine.GetComponents<T>(results); }
+		public T[] GetComponents<T>() { return _parentStateMachine.GetComponents<T>(); }
 
-        public void GetComponentsInChildren<T>(List<T> results){_parentStateMachine.GetComponentsInChildren<T>(results);}
-        public T[] GetComponentsInChildren<T>(){return _parentStateMachine.GetComponentsInChildren<T>();}
-        public void GetComponentsInChildren<T>(bool includeInactive, List<T> result){_parentStateMachine.GetComponentsInChildren<T>(includeInactive, result);}
-        public T[] GetComponentsInChildren<T>(bool includeInactive){return _parentStateMachine.GetComponentsInChildren<T>(includeInactive);}
+		public void GetComponentsInChildren<T>(List<T> results) { _parentStateMachine.GetComponentsInChildren<T>(results); }
+		public T[] GetComponentsInChildren<T>() { return _parentStateMachine.GetComponentsInChildren<T>(); }
+		public void GetComponentsInChildren<T>(bool includeInactive, List<T> result) { _parentStateMachine.GetComponentsInChildren<T>(includeInactive, result); }
+		public T[] GetComponentsInChildren<T>(bool includeInactive) { return _parentStateMachine.GetComponentsInChildren<T>(includeInactive); }
 
-        public T[] GetComponentsInParent<T>(){return _parentStateMachine.GetComponentsInParent<T>();}
-        public T[] GetComponentsInParent<T>(bool includeInactive){return _parentStateMachine.GetComponentsInParent<T>(includeInactive);}
-        public void GetComponentsInParent<T>(bool includeInactive, List<T> results){_parentStateMachine.GetComponentsInParent<T>(includeInactive, results);}
+		public T[] GetComponentsInParent<T>() { return _parentStateMachine.GetComponentsInParent<T>(); }
+		public T[] GetComponentsInParent<T>(bool includeInactive) { return _parentStateMachine.GetComponentsInParent<T>(includeInactive); }
+		public void GetComponentsInParent<T>(bool includeInactive, List<T> results) { _parentStateMachine.GetComponentsInParent<T>(includeInactive, results); }
 
-        public bool TryGetComponent<T>(out T component){return _parentStateMachine.TryGetComponent<T>(out component);}
+		public bool TryGetComponent<T>(out T component) { return _parentStateMachine.TryGetComponent<T>(out component); }
 		#endregion
 
 		private void Transition(State transitionState)
