@@ -48,7 +48,7 @@ namespace UOP1.StateMachine
 		/// Awake is called when creating a new instance. Use this method to cache the components needed for the condition.
 		/// </summary>
 		/// <param name="stateMachine">The <see cref="StateMachine"/> this instance belongs to.</param>
-		public virtual void Awake(StateMachine stateMachine) { }
+		public virtual void Awake(IStateMachine stateMachine) { }
 		public virtual void OnStateEnter() { }
 		public virtual void OnStateExit() { }
 	}
@@ -58,11 +58,11 @@ namespace UOP1.StateMachine
 	/// </summary>
 	public readonly struct StateCondition
 	{
-		internal readonly StateMachine _stateMachine;
+		internal readonly IStateMachine _stateMachine;
 		internal readonly Condition _condition;
 		internal readonly bool _expectedResult;
 
-		public StateCondition(StateMachine stateMachine, Condition condition, bool expectedResult)
+		public StateCondition(IStateMachine stateMachine, Condition condition, bool expectedResult)
 		{
 			_stateMachine = stateMachine;
 			_condition = condition;
@@ -74,9 +74,9 @@ namespace UOP1.StateMachine
 			bool statement = _condition.GetStatement();
 			bool isMet = statement == _expectedResult;
 
-#if UNITY_EDITOR
-			_stateMachine._debugger.TransitionConditionResult(_condition._originSO.name, statement, isMet);
-#endif
+			// #if UNITY_EDITOR
+			// 			_stateMachine._debugger.TransitionConditionResult(_condition._originSO.name, statement, isMet);
+			// #endif
 			return isMet;
 		}
 	}

@@ -13,7 +13,7 @@ namespace UOP1.StateMachine.ScriptableObjects
 		/// <summary>
 		/// Will get the initial state and instantiate all subsequent states, transitions, actions and conditions.
 		/// </summary>
-		internal State GetInitialState(StateMachine stateMachine)
+		internal State GetInitialState(IStateMachine stateMachine)
 		{
 			var states = new List<State>();
 			var transitions = new List<StateTransition>();
@@ -48,7 +48,7 @@ namespace UOP1.StateMachine.ScriptableObjects
 		}
 
 		private static void ProcessConditionUsages(
-			StateMachine stateMachine,
+			IStateMachine stateMachine,
 			ConditionUsage[] conditionUsages,
 			Dictionary<ScriptableObject, object> createdInstances,
 			out StateCondition[] conditions,

@@ -11,7 +11,7 @@ namespace UOP1.StateMachine.ScriptableObjects
 		/// <summary>
 		/// Will create a new state or return an existing one inside <paramref name="createdInstances"/>.
 		/// </summary>
-		internal State GetState(StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
+		internal State GetState(IStateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
 		{
 			if (createdInstances.TryGetValue(this, out var obj))
 				return (State)obj;
@@ -28,7 +28,7 @@ namespace UOP1.StateMachine.ScriptableObjects
 		}
 
 		private static StateAction[] GetActions(StateActionSO[] scriptableActions,
-			StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
+			IStateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
 		{
 			int count = scriptableActions.Length;
 			var actions = new StateAction[count];

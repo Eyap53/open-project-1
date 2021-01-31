@@ -12,7 +12,7 @@ namespace UOP1.StateMachine.ScriptableObjects
 		/// <summary>
 		/// Will create a new custom <see cref="Condition"/> or use an existing one inside <paramref name="createdInstances"/>.
 		/// </summary>
-		internal StateCondition GetCondition(StateMachine stateMachine, bool expectedResult, Dictionary<ScriptableObject, object> createdInstances)
+		internal StateCondition GetCondition(IStateMachine stateMachine, bool expectedResult, Dictionary<ScriptableObject, object> createdInstances)
 		{
 			if (!createdInstances.TryGetValue(this, out var obj))
 			{

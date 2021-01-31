@@ -5,7 +5,7 @@ namespace UOP1.StateMachine
 	public class State
 	{
 		internal StateSO _originSO;
-		internal StateMachine _stateMachine;
+		internal IStateMachine _stateMachine;
 		internal StateTransition[] _transitions;
 		internal StateAction[] _actions;
 
@@ -13,7 +13,7 @@ namespace UOP1.StateMachine
 
 		public State(
 			StateSO originSO,
-			StateMachine stateMachine,
+			IStateMachine stateMachine,
 			StateTransition[] transitions,
 			StateAction[] actions)
 		{

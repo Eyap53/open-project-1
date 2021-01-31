@@ -8,7 +8,7 @@ namespace UOP1.StateMachine.ScriptableObjects
 		/// <summary>
 		/// Will create a new custom <see cref="StateAction"/> or return an existing one inside <paramref name="createdInstances"/>
 		/// </summary>
-		internal StateAction GetAction(StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
+		internal StateAction GetAction(IStateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
 		{
 			if (createdInstances.TryGetValue(this, out var obj))
 				return (StateAction)obj;
