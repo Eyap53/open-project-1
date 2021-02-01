@@ -18,18 +18,18 @@
 		private readonly Dictionary<Type, Component> _cachedComponents = new Dictionary<Type, Component>();
 		internal State _currentState;
 
-		private TransitionTableSO _cachedTransitionTableSO = default;
 		private IStateMachine _parentStateMachine = default;
+		private State _initialState = default;
 
 		public override void Awake(IStateMachine stateMachine)
 		{
 			_parentStateMachine = stateMachine;
-			_cachedTransitionTableSO = _originSO._transitionTableSO;
+			_initialState = _originSO._transitionTableSO.GetInitialState(this);
 		}
 
 		public override void OnStateEnter()
 		{
-			_currentState = _cachedTransitionTableSO.GetInitialState(this);
+			_currentState = _initialState;
 			_currentState.OnStateEnter();
 		}
 
